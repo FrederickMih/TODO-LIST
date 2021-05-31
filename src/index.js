@@ -1,4 +1,4 @@
-import createToDo from './todos'
+import {createToDo, removeTodo, editTodo } from './todos'
 import createProject from './projects'
 
 const toDoList = []
@@ -28,6 +28,7 @@ const projectsDraw = (projects) => {
         link.onclick = () => {
             taskDraw(projects[i].todoes)
         }
+
     }
 }
 
@@ -64,6 +65,15 @@ const taskDraw = (tasks) => {
         card.appendChild(cardText)
         card.appendChild(editLink)
         card.appendChild(removeLink)
+
+
+        console.log("removeLink");
+        removeLink.onclick = () => {
+            removeTodo(tasks, tasks[i]);
+          
+            document.getElementsByClassName("card")[i].remove(); 
+          
+        };
 
     }
 }
