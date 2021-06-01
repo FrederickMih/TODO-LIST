@@ -16,10 +16,8 @@ const createToDo = (title, description, dueDate, priority) => {
     return task
 }
 
-const removeTodo = (array, task) => {
-    if (array.includes(task)){
-        array.splice(array.indexOf(task), 1)
-    }
+const removeTodo = (array, taskId) => {
+    array.splice(taskId, 1)
 }
 
 const editTodo = (task, title, description, dueDate, priority) => {

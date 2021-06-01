@@ -1,5 +1,6 @@
-import {createToDo, removeTodo, editTodo } from './todos'
+import { createToDo, removeTodo, editTodo } from './todos'
 import createProject from './projects'
+
 
 const toDoList = []
 const toDoList2 = []
@@ -9,17 +10,19 @@ const firstProject = createProject("First Project", "Firts Project Description",
 const secondProject = createProject("Second Project", "Second Project Description", toDoList2)
 projects.push(firstProject)
 projects.push(secondProject)
-console.log(projects)
 
 const firstTask = createToDo("New Task", "New Task Description", new Date(), true)
-const secondTask = createToDo("New Task 2", "New Task Description 2", new Date(), true)
+const secondTask = createToDo("New Task 2", "New Task Description 2", new Date(), false)
 const thirdTask = createToDo("New Task 3", "New Task Description 3", new Date(), true)
 toDoList.push(firstTask)
 toDoList2.push(secondTask)
 toDoList2.push(thirdTask)
-firstTask.description = "Updated description"
+
+const addTaskBtn = document.getElementById('add-task-btn')
+const saveBtn = document.querySelector('.save-btn')
 
 const projectsDraw = (projects) => {
+    addTaskBtn.style.display = 'none'
     for (let i = 0; i < projects.length; i++) {
         const link = document.createElement('a')
         link.setAttribute('class', "nav-link")
@@ -28,25 +31,41 @@ const projectsDraw = (projects) => {
         link.onclick = () => {
             taskDraw(projects[i].todoes)
         }
-
+        saveBtn.onclick = () => {
+            const title = document.getElementById('title').value
+            const description = document.getElementById('description').value
+            const dueTime = document.getElementById('dueDate').value
+            const priority = document.getElementById('priority')
+            projects[i].todoes.push(createToDo(title, description, new Date(dueTime), priority.checked))
+            taskDraw(projects[i].todoes)
+            document.getElementById("add-form").reset();
+        }
     }
 }
 
 const taskDraw = (tasks) => {
+    const content = document.querySelector('.content-div')
+    content.innerHTML = ""
     const main = document.querySelector('main')
-    main.innerHTML = ""
-    for (let i = 0; i < tasks.length; i++) {
+    addTaskBtn.style.display = 'block'
+    main.appendChild(addTaskBtn)
+    main.appendChild(content)
+    tasks.forEach((todo) => {
         const card = document.createElement('div')
         const cardBody = document.createElement('div')
         const cardTitle = document.createElement('h3')
         const cardSub = document.createElement('h6')
         const cardText = document.createElement('p')
-        const editLink = document.createElement('a')
+        const editLink = document.createElement('button')
         const removeLink = document.createElement('a')
+        let priority = "Priority: LOW"
+        if (todo.priority) {
+            priority = "Priority: HIGH"
+        }
 
-        cardTitle.innerHTML = tasks[i].title
-        cardSub.innerHTML = tasks[i].dueDate
-        cardText.innerHTML = tasks[i].description
+        cardTitle.innerHTML = todo.title
+        cardSub.innerHTML = todo.dueDate
+        cardText.innerHTML = todo.description + "<br>" + priority
         editLink.innerHTML = 'Edit'
         removeLink.innerHTML = 'Remove'
 
@@ -54,11 +73,11 @@ const taskDraw = (tasks) => {
         cardBody.setAttribute('class', 'card-body')
         cardTitle.setAttribute('class', 'card-title')
         cardSub.setAttribute('class', 'card-subtitle mb-2 text-muted')
-        cardText.setAttribute('class', 'card-link')
-        editLink.setAttribute('class', 'card-text')
-        removeLink.setAttribute('class', 'card-text')
+        cardText.setAttribute('class', 'card-text')
+        editLink.setAttribute('class', 'card-link btn btn-light')
+        removeLink.setAttribute('class', 'card-link btn btn-danger')
 
-        main.appendChild(card)
+        content.appendChild(card)
         card.appendChild(cardBody)
         card.appendChild(cardTitle)
         card.appendChild(cardSub)
@@ -66,16 +85,25 @@ const taskDraw = (tasks) => {
         card.appendChild(editLink)
         card.appendChild(removeLink)
 
-
-        console.log("removeLink");
         removeLink.onclick = () => {
-            removeTodo(tasks, tasks[i]);
-          
-            document.getElementsByClassName("card")[i].remove(); 
-          
+            const id = tasks.indexOf(todo);
+            removeTodo(tasks, id);
+            document.getElementsByClassName("card")[id].remove();
         };
 
-    }
+        editLink.setAttribute('data-bs-toggle', 'modal')
+        editLink.setAttribute('data-bs-target', '#exampleModal')
+        editLink.setAttribute('type', 'button')
+
+        editLink.onclick = () => {
+            document.getElementById('title').value = todo.title
+            document.getElementById('description').value = todo.description
+            document.getElementById('dueDate').value = todo.dueDate
+            // const dueTime = document.getElementById('dueDate').value
+            // const priority = document.getElementById('priority')
+        }
+
+    })
 }
 
 const start = (projects) => {

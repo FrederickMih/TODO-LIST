@@ -1,3 +1,34 @@
 .card {
     width: 18rem;
 }
+
+.nav,
+.main {
+    margin: 0 auto;
+}
+
+.nav {
+    width: 20%;
+    float: left;
+    text-align: center;
+}
+
+.main {
+    width: 60%;
+    clear: both;
+}
+
+.content-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-link:hover,
+.card-link:hover {
+    cursor: pointer;
+}
+
+.card {
+    padding: 1rem;
+    margin: 1rem;
+}
