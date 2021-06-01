@@ -12,7 +12,26 @@
 </head>
 
 <body>
-  <nav class="nav flex-column"></nav>
+  <nav class="nav flex-column">
+
+  <button type="button" class="btn btn-secondary" id="newProBtn">New Project</button>
+
+ <div id="project-div">
+  <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Title" aria-label="Example text with button addon" aria-describedby="button-addon1">
+   </div>
+
+  <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Description" aria-label="Example text with button addon" aria-describedby="button-addon1">
+      <button class="btn btn-outline-secondary" type="button" 
+      id="button-addon1">Button</button>
+ </div>
+ </div>
+   
+
+
+
+  </nav>
   <main class="main">
     <button id="add-task-btn" type="button" class="btn btn-primary" data-bs-toggle="modal"
       data-bs-target="#exampleModal">
