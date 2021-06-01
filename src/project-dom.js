@@ -1,4 +1,6 @@
+import createProject from './projects'
 const showBtn = document.getElementById("newProBtn");
+const addBtn = document.getElementById("button-addon1");
 showBtn.onclick = () => {
    const findDiv = document.getElementById("project-div");
    if ( findDiv.style.display === "none" ) {
@@ -9,4 +11,11 @@ showBtn.onclick = () => {
    }
   
 };
+
+addBtn.onclick = () => {
+ const projectTitle = document.getElementById("projectTitle").value;
+ const projectDesc = document.getElementById("projectDesc").value;
+
+}
+
 export default showBtn;

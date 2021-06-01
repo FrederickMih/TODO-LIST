@@ -25,11 +25,14 @@ const editBtn = document.querySelector('.edit-btn')
 
 const projectsDraw = (projects) => {
     addTaskBtn.style.display = 'none'
+    const projectsContainer = document.getElementById('projectsContainer')
+    projectsContainer.innerHTML = ""
     for (let i = 0; i < projects.length; i++) {
         const link = document.createElement('a')
         link.setAttribute('class', "nav-link")
+        projectsContainer.appendChild(link)
         link.innerText = projects[i].title
-        document.querySelector('.nav').appendChild(link)
+        // document.querySelector('.nav').appendChild(link)
         link.onclick = () => {
             taskDraw(projects[i].todoes)
         }
@@ -122,9 +125,31 @@ const taskDraw = (tasks) => {
     })
 }
 
+const showProjectBtn = document.getElementById("newProBtn");
+const addProjectBtn = document.getElementById("button-addon1");
+showProjectBtn.onclick = () => {
+  const findDiv = document.getElementById("project-div");
+  if (findDiv.style.display === "none") {
+    findDiv.style.display = "block";
+  } else {
+    findDiv.style.display = "none";
+  }
+};
+
+addProjectBtn.onclick = () => {
+  const projectTitle = document.getElementById("projectTitle").value;
+  const projectDesc = document.getElementById("projectDesc").value;
+  projects.push(createProject(projectTitle, projectDesc, []));
+  projectsDraw(projects);
+};
+
+
+
+
 const start = (projects) => {
     projectsDraw(projects)
 }
+
 
 start(projects)
 
