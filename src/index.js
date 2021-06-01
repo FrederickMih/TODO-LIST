@@ -1,5 +1,6 @@
 import { createToDo, removeTodo, editTodo } from './todos'
 import createProject from './projects'
+import { format } from 'date-fns'
 
 
 const toDoList = []
@@ -20,6 +21,7 @@ toDoList2.push(thirdTask)
 
 const addTaskBtn = document.getElementById('add-task-btn')
 const saveBtn = document.querySelector('.save-btn')
+const editBtn = document.querySelector('.edit-btn')
 
 const projectsDraw = (projects) => {
     addTaskBtn.style.display = 'none'
@@ -31,11 +33,11 @@ const projectsDraw = (projects) => {
         link.onclick = () => {
             taskDraw(projects[i].todoes)
         }
+        const title = document.getElementById('title').value
+        const description = document.getElementById('description').value
+        const dueTime = document.getElementById('dueDate').value
+        const priority = document.getElementById('priority')
         saveBtn.onclick = () => {
-            const title = document.getElementById('title').value
-            const description = document.getElementById('description').value
-            const dueTime = document.getElementById('dueDate').value
-            const priority = document.getElementById('priority')
             projects[i].todoes.push(createToDo(title, description, new Date(dueTime), priority.checked))
             taskDraw(projects[i].todoes)
             document.getElementById("add-form").reset();
@@ -48,6 +50,9 @@ const taskDraw = (tasks) => {
     content.innerHTML = ""
     const main = document.querySelector('main')
     addTaskBtn.style.display = 'block'
+    addTaskBtn.onclick = () => {
+        document.getElementById("add-form").reset();
+    }
     main.appendChild(addTaskBtn)
     main.appendChild(content)
     tasks.forEach((todo) => {
@@ -95,12 +100,23 @@ const taskDraw = (tasks) => {
         editLink.setAttribute('data-bs-target', '#exampleModal')
         editLink.setAttribute('type', 'button')
 
+
         editLink.onclick = () => {
             document.getElementById('title').value = todo.title
             document.getElementById('description').value = todo.description
-            document.getElementById('dueDate').value = todo.dueDate
-            // const dueTime = document.getElementById('dueDate').value
-            // const priority = document.getElementById('priority')
+            document.getElementById('dueDate').value = format(todo.dueDate, 'yyyy-MM-dd')
+            document.getElementById('priority').checked = todo.priority
+        }
+
+
+
+        editBtn.onclick = () => {
+            const title = document.getElementById('title').value
+            const description = document.getElementById('description').value
+            const dueTime = document.getElementById('dueDate').value
+            const priority = document.getElementById('priority').checked
+            console.log("todo's title = " + todo.title)
+            editTodo(todo, title, description, dueTime, priority)
         }
 
     })

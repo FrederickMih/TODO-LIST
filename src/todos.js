@@ -1,14 +1,11 @@
-import { desktopNames } from "browserslist"
-
 class Todo {
-    
+
     constructor(title, description, dueDate, priority) {
         this.title = title
         this.description = description
         this.dueDate = dueDate
         this.priority = priority
     }
-
 }
 
 const createToDo = (title, description, dueDate, priority) => {
@@ -27,8 +24,8 @@ const editTodo = (task, title, description, dueDate, priority) => {
     task.priority = priority;
 }
 
-export{  
- createToDo,
- removeTodo,
- editTodo
+export {
+    createToDo,
+    removeTodo,
+    editTodo
 }
