@@ -20,32 +20,35 @@ toDoList2.push(secondTask)
 toDoList2.push(thirdTask)
 
 const addTaskBtn = document.getElementById('add-task-btn')
-const saveBtn = document.querySelector('.save-btn')
-const editBtn = document.querySelector('.edit-btn')
+const saveBtn = document.getElementById('save-btn')
+const editBtn = document.getElementById('edit-btn')
 
 const projectsDraw = (projects) => {
     addTaskBtn.style.display = 'none'
+
     const projectsContainer = document.getElementById('projectsContainer')
     projectsContainer.innerHTML = ""
-    for (let i = 0; i < projects.length; i++) {
+    projects.forEach((project) => {
         const link = document.createElement('a')
         link.setAttribute('class', "nav-link")
         projectsContainer.appendChild(link)
-        link.innerText = projects[i].title
-        // document.querySelector('.nav').appendChild(link)
+        link.innerText = project.title
         link.onclick = () => {
-            taskDraw(projects[i].todoes)
+            taskDraw(project.todoes)
+            saveBtn.onclick = () => {
+                const title = document.getElementById('title').value
+                const description = document.getElementById('description').value
+                const dueTime = document.getElementById('dueDate').value
+                const priority = document.getElementById('priority')
+                const links = document.getElementsByClassName('nav-link')
+                const id = Array.prototype.indexOf.call(links, link);
+                projects[id].todoes.push(createToDo(title, description, new Date(dueTime), priority.checked))
+                taskDraw(project.todoes)
+                document.getElementById("add-form").reset();
+            }
         }
-        const title = document.getElementById('title').value
-        const description = document.getElementById('description').value
-        const dueTime = document.getElementById('dueDate').value
-        const priority = document.getElementById('priority')
-        saveBtn.onclick = () => {
-            projects[i].todoes.push(createToDo(title, description, new Date(dueTime), priority.checked))
-            taskDraw(projects[i].todoes)
-            document.getElementById("add-form").reset();
-        }
-    }
+
+    })
 }
 
 const taskDraw = (tasks) => {
@@ -54,6 +57,8 @@ const taskDraw = (tasks) => {
     const main = document.querySelector('main')
     addTaskBtn.style.display = 'block'
     addTaskBtn.onclick = () => {
+        saveBtn.style.display = 'block'
+        editBtn.style.display = 'none'
         document.getElementById("add-form").reset();
     }
     main.appendChild(addTaskBtn)
@@ -105,13 +110,13 @@ const taskDraw = (tasks) => {
 
 
         editLink.onclick = () => {
+            saveBtn.style.display = 'none'
+            editBtn.style.display = 'block'
             document.getElementById('title').value = todo.title
             document.getElementById('description').value = todo.description
             document.getElementById('dueDate').value = format(todo.dueDate, 'yyyy-MM-dd')
             document.getElementById('priority').checked = todo.priority
         }
-
-
 
         editBtn.onclick = () => {
             const title = document.getElementById('title').value
@@ -128,23 +133,20 @@ const taskDraw = (tasks) => {
 const showProjectBtn = document.getElementById("newProBtn");
 const addProjectBtn = document.getElementById("button-addon1");
 showProjectBtn.onclick = () => {
-  const findDiv = document.getElementById("project-div");
-  if (findDiv.style.display === "none") {
-    findDiv.style.display = "block";
-  } else {
-    findDiv.style.display = "none";
-  }
+    const findDiv = document.getElementById("project-div");
+    if (findDiv.style.display === "none") {
+        findDiv.style.display = "block";
+    } else {
+        findDiv.style.display = "none";
+    }
 };
 
 addProjectBtn.onclick = () => {
-  const projectTitle = document.getElementById("projectTitle").value;
-  const projectDesc = document.getElementById("projectDesc").value;
-  projects.push(createProject(projectTitle, projectDesc, []));
-  projectsDraw(projects);
+    const projectTitle = document.getElementById("projectTitle").value;
+    const projectDesc = document.getElementById("projectDesc").value;
+    projects.push(createProject(projectTitle, projectDesc, []));
+    projectsDraw(projects);
 };
-
-
-
 
 const start = (projects) => {
     projectsDraw(projects)
