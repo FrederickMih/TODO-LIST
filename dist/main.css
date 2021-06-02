@@ -1,0 +1,89 @@
+body {
+    background: url(assets/back.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.div-content {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 18rem;
+}
+
+.nav,
+.main {
+    margin: 0 auto;
+    background-color: rgb(217, 227, 236);
+    border: 1px solid gray;
+}
+
+.add-task-btn {
+    margin: 1rem auto;
+    width: 20rem;
+}
+
+.card {
+    border: 1px solid darkblue;
+}
+
+.slogo {
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    color: #6C757D;
+    text-align: center;
+    color: darkblue;
+    font-size: 3rem;
+    font-weight: bolder;
+    padding: 1rem;
+    background-color: rgb(217, 227, 236, 0.7);
+}
+
+.descr-parag {
+    color: darkblue;
+    padding-left: 1rem;
+}
+
+.nav {
+    width: 20%;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.main {
+    width: auto;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.content-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    color: darkblue;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.nav-link:hover,
+.card-link:hover {
+    cursor: pointer;
+}
+
+.btn-danger {
+    margin-left: 0.1rem;
+}
+
+.card {
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.check-todo {
+    text-align: center;
+    border: 1px solid border;
+    margin: 1rem;
+}
