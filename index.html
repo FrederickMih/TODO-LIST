@@ -12,83 +12,81 @@
 </head>
 
 <body>
-  <nav class="nav flex-column">
+  <h1 class="slogo">Your Best To Do Manager</h1>
+  <div class="div-content">
+    <nav class="nav flex-column">
+      <button type="button" class="btn btn-secondary" id="newProBtn">New Project</button>
+      <div id="project-div">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="projectTitle" placeholder="Title"
+            aria-label="Example text with button addon" aria-describedby="button-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="projectDesc" placeholder="Description"
+            aria-label="Example text with button addon" aria-describedby="button-addon1">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon1">Add</button>
+        </div>
+      </div>
+      <div id="projectsContainer">
 
-    <button type="button" class="btn btn-secondary" id="newProBtn">New Project</button>
+      </div>
+    </nav>
 
-    <div id="project-div">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" id="projectTitle" placeholder="Title"
-          aria-label="Example text with button addon" aria-describedby="button-addon1">
+    <main class="main">
+      <button id="add-task-btn" type="button" class="btn btn-secondary" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        New To Do
+      </button>
+
+      <div class="content-div">
+
       </div>
 
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" id="projectDesc" placeholder="Description"
-          aria-label="Example text with button addon" aria-describedby="button-addon1">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Add</button>
-      </div>
-    </div>
-
-    <div id="projectsContainer">
-
-    </div>
-
-
-  </nav>
-  <main class="main">
-    <button id="add-task-btn" type="button" class="btn btn-primary" data-bs-toggle="modal"
-      data-bs-target="#exampleModal">
-      Add a new ToDo
-    </button>
-
-    <div class="content-div">
-
-    </div>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New ToDo</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="add-form">
-              <div class="mb-3">
-                <label for="title" class="col-form-label">Title:</label>
-                <input type="text" class="form-control" id="title" />
-              </div>
-              <div class="mb-3">
-                <label for="dueDate" class="col-form-label">To finish before:</label>
-                <input type="date" class="form-control" id="dueDate" />
-              </div>
-              <div class="mb-3">
-                <label for="description" class="col-form-label">Description:</label>
-                <textarea class="form-control" id="description"></textarea>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="priority">
-                <label class="form-check-label" for="priority">
-                  High Priority
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              Close
-            </button>
-            <button id="save-btn" type="button" class="btn btn-primary save-btn" data-bs-dismiss="modal">
-              Add
-            </button>
-            <button id="edit-btn" type="button" class="btn btn-primary edit-btn" data-bs-dismiss="modal">
-              Save
-            </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New ToDo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="add-form">
+                <div class="mb-3">
+                  <label for="title" class="col-form-label">Title:</label>
+                  <input type="text" class="form-control" id="title" />
+                </div>
+                <div class="mb-3">
+                  <label for="dueDate" class="col-form-label">To finish before:</label>
+                  <input type="date" class="form-control" id="dueDate" />
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="col-form-label">Description:</label>
+                  <textarea class="form-control" id="description"></textarea>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="priority">
+                  <label class="form-check-label" for="priority">
+                    High Priority
+                  </label>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button id="save-btn" type="button" class="btn btn-primary save-btn" data-bs-dismiss="modal">
+                Add
+              </button>
+              <button id="edit-btn" type="button" class="btn btn-primary edit-btn" data-bs-dismiss="modal">
+                Save
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <script src="main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"

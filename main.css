@@ -1,3 +1,13 @@
+body {
+    background: url(../assets/back.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.div-content {
+    display: flex;
+    justify-content: center;
+}
+
 .card {
     width: 18rem;
 }
@@ -5,17 +15,49 @@
 .nav,
 .main {
     margin: 0 auto;
+    background-color: rgb(217, 227, 236);
+    border: 1px solid gray;
+}
+
+#add-task-btn {
+    margin: 1rem auto;
+    /* padding-left: 1rem;
+    padding-right: 1rem; */
+    width: 20rem;
+}
+
+.card {
+    border: 1px solid darkblue;
+}
+
+.slogo {
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    color: #6C757D;
+    text-align: center;
+    color: darkblue;
+    font-size: 3rem;
+    font-weight: bolder;
+    padding: 1rem;
+    background-color: rgb(217, 227, 236, 0.7);
+}
+
+.descr-parag {
+    color: darkblue;
+    padding-left: 1rem;
 }
 
 .nav {
     width: 20%;
-    float: left;
-    text-align: center;
+
+    padding: 1rem;
+    margin: 1rem;
 }
 
 .main {
-    width: 60%;
-    clear: both;
+    width: auto;
+    padding: 1rem;
+    margin: 1rem;
 }
 
 .content-div {
@@ -23,9 +65,20 @@
     flex-wrap: wrap;
 }
 
+.nav-link {
+    color: darkblue;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
 .nav-link:hover,
 .card-link:hover {
     cursor: pointer;
+}
+
+.card-link {
+    margin-top: 0.1rem;
+    margin-left: 0.1rem !important;
 }
 
 .card {
