@@ -8,7 +8,7 @@
 
 ## How it looks
 
-![](../TODO-LIST/assets/mainscreen.png)
+![](assets/mainscreen.png)
 
 ## Getting Started
 
