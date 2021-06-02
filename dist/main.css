@@ -19,10 +19,8 @@ body {
     border: 1px solid gray;
 }
 
-#add-task-btn {
+.add-task-btn {
     margin: 1rem auto;
-    /* padding-left: 1rem;
-    padding-right: 1rem; */
     width: 20rem;
 }
 
@@ -49,7 +47,6 @@ body {
 
 .nav {
     width: 20%;
-
     padding: 1rem;
     margin: 1rem;
 }
@@ -76,12 +73,17 @@ body {
     cursor: pointer;
 }
 
-.card-link {
-    margin-top: 0.1rem;
-    margin-left: 0.1rem !important;
+.btn-danger {
+    margin-left: 0.1rem;
 }
 
 .card {
     padding: 1rem;
+    margin: 1rem;
+}
+
+.check-todo {
+    text-align: center;
+    border: 1px solid border;
     margin: 1rem;
 }
