@@ -8,7 +8,7 @@
 
 ## How it looks
 
-![](assets/mainscreen.png)
+![](dist/assets/mainscreen.png)
 
 ## Getting Started
 
