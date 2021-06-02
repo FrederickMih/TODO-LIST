@@ -6,6 +6,11 @@
 
 - JavaScript, Webpack and Bootstrap
 
+## Live version
+
+[Todo List](https://frederickmih.github.io/TODO-LIST/)
+
+
 ## How it looks
 
 ![](dist/assets/mainscreen.png)
