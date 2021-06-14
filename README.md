@@ -1,7 +1,9 @@
 ## Todo List- JavaScript
 
 > This is the Todo List Project in [The Odin Project's](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/todo-list) JavaScript Curriculum.
-
+## Testing 
+-  run `npm install --save-dev jest`
+-  `npm run test`
 ## Built With
 
 - JavaScript, Webpack and Bootstrap
