@@ -8,14 +8,10 @@ class Todo {
 }
 
 const createToDo = (title, description, dueDate, priority) => {
-  if (typeof title != "string")
-    throw new TypeError("title should be a string")
-  else if (typeof description != "string")
-    throw new TypeError("description should be a string")
-  else if (!(dueDate instanceof Date))
-    throw new TypeError("dueDate should be a Date object")
-  else if (typeof priority !== 'boolean')
-    throw new TypeError("priority should be a boolean")
+  if (typeof title !== 'string') throw new TypeError('title should be a string');
+  else if (typeof description !== 'string') throw new TypeError('description should be a string');
+  else if (!(dueDate instanceof Date)) throw new TypeError('dueDate should be a Date object');
+  else if (typeof priority !== 'boolean') throw new TypeError('priority should be a boolean');
   return new Todo(title, description, dueDate, priority);
 };
 
