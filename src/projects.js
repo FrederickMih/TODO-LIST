@@ -7,6 +7,16 @@ class Project {
   }
 }
 
-const createProject = (title, description, todoes) => new Project(title, description, todoes);
+const createProject = (title, description, todoes) => {
+  if (typeof title != "string")
+    throw new TypeError("Title should be a string")
+  else if (typeof description != "string")
+    throw new TypeError("description should be a string")
+  else if (!Array.isArray(todoes))
+    throw new TypeError("todoes should be an array")
+
+  return new Project(title, description, todoes);
+
+}
 
 export default createProject;
